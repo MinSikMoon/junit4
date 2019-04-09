@@ -14,4 +14,10 @@ public class StringHelperTest {
 		assertEquals(expected, actual);
 	}
 
+	@Test
+	public void test2() {
+		StringHelper helper = new StringHelper();
+		assertEquals("CD", helper.truncateAInFirst2Positions("ACD"));
+	}
+
 }
