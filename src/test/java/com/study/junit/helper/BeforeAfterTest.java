@@ -1,39 +1,42 @@
 package com.study.junit.helper;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import static org.junit.Assert.assertEquals;
+
+import java.util.Arrays;
+import java.util.Collection;
+
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
 
+@RunWith(Parameterized.class)
 public class BeforeAfterTest {
-	@BeforeClass
-	public static void beforeClass() {
-		System.out.println("Before Class==");
+	
+	StringHelper helper = new StringHelper();
+	private String input;
+	private String expectedOutput;
+	
+	public BeforeAfterTest(String input, String expectedOutput) {
+		super();
+		this.input = input;
+		this.expectedOutput = expectedOutput;
 	}
-	@AfterClass
-	public static void afterClass() {
-		System.out.println("after Class==");
+	
+	@Parameters
+	public static Collection<String[]> testConditions() {
+		String expectedOutputs[][] = {{"AACD", "CD"},
+		{"ACD", "CD"}};
+		return Arrays.asList(expectedOutputs);
 	}
+    @Test
+    public void test() {
+        assertEquals(expectedOutput, helper.truncateAInFirst2Positions(input));
+    }
 
-	@Before
-	public void setup() {
-		System.out.println("Before Test");
-	}
-
-	@Test
-	public void test() {
-		System.out.println("test1 executed");
-	}
-
-	@Test
-	public void test2() {
-		System.out.println("test2 executed");
-	}
-
-	@After
-	public void tearddown() {
-		System.out.println("after test");
-	}
+    @Test
+    public void test2() {
+        assertEquals(expectedOutput, helper.truncateAInFirst2Positions(input));
+    }
 
 }
