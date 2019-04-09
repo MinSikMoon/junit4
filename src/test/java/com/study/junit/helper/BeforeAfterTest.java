@@ -1,7 +1,6 @@
 package com.study.junit.helper;
 
-import static org.junit.Assert.*;
-
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,7 +18,12 @@ public class BeforeAfterTest {
 
     @Test
     public void test2() {
-        System.out.println("test1 executed");
+        System.out.println("test2 executed");
+    }
+
+    @After
+    public void tearddown() {
+        System.out.println("after test");
     }
 
 }
